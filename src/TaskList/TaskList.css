@@ -1,0 +1,24 @@
+.TaskList__wrapper{
+    margin: 10px;
+    background-color: green;
+}  
+.SingleTask__wrapper{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+
+    background-color:aqua;
+}
+.SingleTask__buttons{
+    display: flex;
+}
+.SingleTask__settings{
+    width: 20px;
+    height: 20px;
+    background-color: yellow;
+}
+.SingleTask__delete{
+    width: 20px;
+    height: 20px;
+    background-color: yellow;
+}

@@ -1,0 +1,14 @@
+.body{
+    display: flex; 
+    justify-content: center;  
+}
+.App-wrapper{
+    width: 1000px;
+    margin: 10px;
+    padding: 10px;
+    background-color: red;
+    border: 3px solid;
+}
+.testButton{
+    margin: 10px;
+}

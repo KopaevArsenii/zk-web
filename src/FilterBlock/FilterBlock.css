@@ -1,0 +1,10 @@
+.FilterBlock__wrapper{
+    background-color: green;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+.FilterBlock__input{
+    width: 75%;
+    height: 20px;
+}
