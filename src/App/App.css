@@ -12,3 +12,7 @@
 .testButton{
     margin: 10px;
 }
+.error-message{
+    font-size: 30px;
+    text-align: center;
+}

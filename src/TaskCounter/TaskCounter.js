@@ -1,8 +1,8 @@
 import './TaskCounter.css'
 
-const TaskCounter = () => {
+const TaskCounter = ({counter}) => {
     return(
-        <div className='TaskCounter-title'>Total tasks: 3</div>
+        <div className='TaskCounter-title'>Total tasks: {counter}</div>
     )
 }
 

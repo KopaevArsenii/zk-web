@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 
 import './AddTaskModal.css'
 
-const AddTaskModal = ({isVisiable=false, onClose}) => {
+const AddTaskModal = ({isVisiable=false, onClose, addTask}) => {
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -18,6 +18,7 @@ const AddTaskModal = ({isVisiable=false, onClose}) => {
         }),
         onSubmit: values => {
             console.log(JSON.stringify(values, null, 2))
+            addTask(values.name, 'some state', values.culture, 'employee1')
         }
     })
 
