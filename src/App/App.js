@@ -10,29 +10,35 @@ import { useState } from "react";
 import './App.css'
 
 const App = () => {
-    const [data, setData] = useState([{name: 'task1', state: 'state1', culture: 'culture name', employee: 'employee1', id: +new Date()}, 
-                                    {name: 'task2', state: 'state2', culture: 'culture name', employee: 'employee2', id: +new Date()-1}, 
-                                    {name: 'task3', state: 'state3', culture: 'culture name', employee: 'employee3', id: +new Date()-2}]);
+    const [data, setData] = useState([{name: 'task1', state: 'state1', culture: 'culture 1', employee: 'employee1', id: +new Date()}, 
+                                    {name: 'task2', state: 'state2', culture: 'culture 2', employee: 'employee2', id: +new Date()-1}, 
+                                    {name: 'task3', state: 'state3', culture: 'culture 3', employee: 'employee3', id: +new Date()-2}]);
     const [isVisiable, setisVisiable] = useState(false);
+    const [infoId, setInfoId] = useState(0);
 
     const onClose = () => {
         setisVisiable(false)
     }
+
     const onOpen = () => {
         setisVisiable(true)
     }
 
     const onDelete = (id) => {
-        console.log('click')
         let returnArr = data.filter(item => {
             return item.id !== id
         })
         
         setData(returnArr)
     }
+
     const addTask = (name, state, culture, employee) => {
         setData([...data, {name: name, state: state, culture: culture, employee: employee, id: +new Date()}]);
         onClose();
+    }
+
+    const onSelectedTask = (id) => {
+        setInfoId(id)
     }
 
     return (
@@ -42,11 +48,11 @@ const App = () => {
                 <TaskCounter counter={data.length}/>
                 <FilterBlock />
                 {data.length !== 0 ? null : <div className="error-message">NO DATA!</div>}
-                <TaskList data={data} onDelete={onDelete}/>
+                <TaskList data={data} onDelete={onDelete} onSelectedTask={onSelectedTask}/>
                 <button className="testButton" onClick={() => onOpen()}>Create task</button>
                 <AddTaskModal isVisiable={isVisiable} onClose={onClose} addTask={addTask}/>
             </div>
-            <InfoBlock />
+            <InfoBlock data={data} infoId={infoId}/>
         </div>
     )
 }
