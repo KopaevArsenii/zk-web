@@ -22,7 +22,7 @@ const AddTaskModal = ({isVisiable=false, onClose, addTask}) => {
         onSubmit: values => {
             console.log(JSON.stringify(values, null, 2))
 
-            addTask(values.name, 'some state', values.culture, 'employee1')             //Функция по созданию нового элемента списка
+            addTask(values.name, 'some state', values.date, values.culture, values.employees)             //Функция по созданию нового элемента списка
             
             values.name='';
             values.culture='';

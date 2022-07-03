@@ -5,16 +5,16 @@ import FilterBlock from "../FilterBlock/FilterBlock";
 import TaskList from "../TaskList/TaskList";
 import AddTaskModal from "../AddTaskModal/AddTaskModal";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import './App.css'
 
 const App = () => {
-    const [data, setData] = useState([{name: 'task1', state: 'state1', culture: 'culture 1', employee: 'employee1', id: +new Date()}, 
-                                    {name: 'task2', state: 'state2', culture: 'culture 2', employee: 'employee2', id: +new Date()-1}, 
-                                    {name: 'task3', state: 'state3', culture: 'culture 3', employee: 'employee3', id: +new Date()-2}]);
+    const [data, setData] = useState([{name: 'task1', state: 'state1', planting: '17.06.2022', culture: 'кукуруза', employees: ['Коля', 'Петя'], id: +new Date()}, 
+                                    {name: 'task2', state: 'state2', planting: '17.06.2022', culture: 'горох', employees: ['Хуйло', 'Таня'], id: +new Date()-1}, 
+                                    {name: 'task3', state: 'state3', planting: '17.06.2022', culture: 'помидор', employees: ['Артём', 'Путин'], id: +new Date()-2}]);
     const [isVisiable, setisVisiable] = useState(false);
-    const [infoId, setInfoId] = useState(0);
+    const [selectedObj, setSelectedObj] = useState([]);
 
     const onClose = () => {
         setisVisiable(false)
@@ -32,14 +32,21 @@ const App = () => {
         setData(returnArr)
     }
 
-    const addTask = (name, state, culture, employee) => {
-        setData([...data, {name: name, state: state, culture: culture, employee: employee, id: +new Date()}]);
+    const addTask = (name, state, planting, culture, employees) => {
+        setData([...data, {name: name, state: state, planting:planting, culture: culture, employees: employees, id: +new Date()}]);
         onClose();
     }
 
     const onSelectedTask = (id) => {
-        setInfoId(id)
+        let returnObj = data.filter(item => {
+            return item.id === id
+        })
+        setSelectedObj(returnObj)
     }
+
+    useEffect(() => {
+        if (data.length === 0) setSelectedObj([])
+    }, [data])
 
     return (
         <div className="body">
@@ -52,7 +59,7 @@ const App = () => {
                 <button className="testButton" onClick={() => onOpen()}>Create task</button>
                 <AddTaskModal isVisiable={isVisiable} onClose={onClose} addTask={addTask}/>
             </div>
-            <InfoBlock data={data} infoId={infoId}/>
+            <InfoBlock selectedObj={selectedObj}/>
         </div>
     )
 }
