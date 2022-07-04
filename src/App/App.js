@@ -4,12 +4,14 @@ import TaskCounter from "../TaskCounter/TaskCounter";
 import FilterBlock from "../FilterBlock/FilterBlock";
 import TaskList from "../TaskList/TaskList";
 import AddTaskModal from "../AddTaskModal/AddTaskModal";
+import LoginPage from "../LoginPage/LoginPage";
 
 import { useState, useEffect } from "react";
 
 import './App.css'
 
 const App = () => {
+    const [isLogined, setIsLogined] = useState(false);
     const [data, setData] = useState([{name: 'task1', state: 'state1', planting: '17.06.2022', culture: 'кукуруза', employees: ['Коля', 'Петя'], id: +new Date()}, 
                                     {name: 'task2', state: 'state2', planting: '17.06.2022', culture: 'горох', employees: ['Хуйло', 'Таня'], id: +new Date()-1}, 
                                     {name: 'task3', state: 'state3', planting: '17.06.2022', culture: 'помидор', employees: ['Артём', 'Путин'], id: +new Date()-2}]);
@@ -48,6 +50,14 @@ const App = () => {
         if (data.length === 0) setSelectedObj([])
     }, [data])
 
+    if (!isLogined){
+        return (
+            <div className="body">
+                <LoginPage setIsLogined={setIsLogined}/>
+            </div>
+        )
+    }
+    
     return (
         <div className="body">
             <NavMenu />
