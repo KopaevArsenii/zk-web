@@ -13,8 +13,8 @@ import './App.css'
 const App = () => {
     const [isLogined, setIsLogined] = useState(false);
     const [data, setData] = useState([{name: 'task1', state: 'state1', planting: '17.06.2022', culture: 'кукуруза', employees: ['Коля', 'Петя'], id: +new Date()}, 
-                                    {name: 'task2', state: 'state2', planting: '17.06.2022', culture: 'горох', employees: ['Хуйло', 'Таня'], id: +new Date()-1}, 
-                                    {name: 'task3', state: 'state3', planting: '17.06.2022', culture: 'помидор', employees: ['Артём', 'Путин'], id: +new Date()-2}]);
+                                    {name: 'task2', state: 'state2', planting: '17.06.2022', culture: 'горох', employees: ['Оля', 'Таня'], id: +new Date()-1}, 
+                                    {name: 'task3', state: 'state3', planting: '17.06.2022', culture: 'помидор', employees: ['Артём', 'Олег'], id: +new Date()-2}]);
     const [isVisiable, setisVisiable] = useState(false);
     const [selectedObj, setSelectedObj] = useState([]);
 
